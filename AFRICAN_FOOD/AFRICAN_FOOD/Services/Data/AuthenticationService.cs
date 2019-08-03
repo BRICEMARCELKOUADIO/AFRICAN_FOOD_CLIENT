@@ -21,7 +21,7 @@ namespace AFRICAN_FOOD.Services.Data
 
         }
 
-        public async Task<AuthenticationResponse> Register(string firstName, string lastName, string email, string userName, string password)
+        public async Task<AuthenticationResponse> Register(string firstName, string lastName, string email, bool typeuser, string userName, string password)
         {
             UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
             {
@@ -34,7 +34,9 @@ namespace AFRICAN_FOOD.Services.Data
                 FirstName = firstName,
                 LastName = lastName,
                 UserName = userName,
-                Password = password
+                Password = password,
+                TypeUser = typeuser
+
             };
 
             return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(builder.ToString(), authenticationRequest);

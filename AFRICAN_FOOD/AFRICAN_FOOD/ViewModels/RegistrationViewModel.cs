@@ -19,6 +19,7 @@ namespace AFRICAN_FOOD.ViewModels
         private string _lastName;
         private string _password;
         private string _email;
+        private string _phone;
 
         public RegistrationViewModel(IConnectionService connectionService,
             INavigationService navigationService, IDialogService dialogService,
@@ -69,6 +70,16 @@ namespace AFRICAN_FOOD.ViewModels
             }
         }
 
+        public string Phone
+        {
+            get => _phone;
+            set
+            {
+                _phone = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string Password
         {
             get => _password;
@@ -86,8 +97,9 @@ namespace AFRICAN_FOOD.ViewModels
         {
             if (_connectionService.IsConnected)
             {
+
                 var userRegistered = await
-                    _authenticationService.Register(_firstName, _lastName, _email, _userName, _password);
+                    _authenticationService.Register(_firstName, _lastName, _email, true, _userName, _password); ;
 
                 if (userRegistered.IsAuthenticated)
                 {
