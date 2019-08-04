@@ -14,12 +14,11 @@ namespace AFRICAN_FOOD.ViewModels
         private readonly IAuthenticationService _authenticationService;
         private readonly ISettingsService _settingsService;
 
-        private string _userName;
         private string _firstName;
         private string _lastName;
         private string _password;
         private string _email;
-        private string _phone;
+        private string _userPhone;
 
         public RegistrationViewModel(IConnectionService connectionService,
             INavigationService navigationService, IDialogService dialogService,
@@ -28,16 +27,6 @@ namespace AFRICAN_FOOD.ViewModels
         {
             _authenticationService = authenticationService;
             _settingsService = settingsService;
-        }
-
-        public string UserName
-        {
-            get => _userName;
-            set
-            {
-                _userName = value;
-                OnPropertyChanged();
-            }
         }
 
         public string FirstName
@@ -70,12 +59,12 @@ namespace AFRICAN_FOOD.ViewModels
             }
         }
 
-        public string Phone
+        public string UserPhone
         {
-            get => _phone;
+            get => _userPhone;
             set
             {
-                _phone = value;
+                _userPhone = value;
                 OnPropertyChanged();
             }
         }
@@ -99,7 +88,7 @@ namespace AFRICAN_FOOD.ViewModels
             {
 
                 var userRegistered = await
-                    _authenticationService.Register(_firstName, _lastName, _email, true, _userName, _password); ;
+                    _authenticationService.Register(_firstName, _lastName, _email, true, _userPhone, _password); ;
 
                 if (userRegistered.IsAuthenticated)
                 {

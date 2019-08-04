@@ -34,7 +34,7 @@
                         </Grid.RowDefinitions>
                         <Image HeightRequest="200" Grid.Row="0" Source="carousel3.jpg" Aspect="AspectFill"></Image>
                         <StackLayout Grid.Row="1">
-                            <Label Text="OUR SELECTION OF PIES" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label Text="TOUTES LES PUBLICATIONS" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
                         </StackLayout>
                     </Grid>
                 </DataTemplate>

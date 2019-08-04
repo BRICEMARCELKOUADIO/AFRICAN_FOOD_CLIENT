@@ -11,7 +11,7 @@ using Acr.UserDialogs;
 namespace AFRICAN_FOOD.Droid
 {
     [Activity(Label = "AFRICAN FOOD",
-        Icon = "@drawable/ic_pies", Theme = "@style/MainTheme", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
+        Icon = "@drawable/lunch", Theme = "@style/MainTheme", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         internal static MainActivity Instance { get; private set; }

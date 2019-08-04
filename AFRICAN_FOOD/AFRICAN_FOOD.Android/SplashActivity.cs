@@ -14,7 +14,7 @@ using Android.Widget;
 namespace AFRICAN_FOOD.Droid
 {
     [Activity(Label = "AFRICAN FOOD",
-        Icon = "@drawable/ic_pies",
+        Icon = "@drawable/lunch",
         Theme = "@style/SplashTheme",
         MainLauncher = true,
         NoHistory = true,

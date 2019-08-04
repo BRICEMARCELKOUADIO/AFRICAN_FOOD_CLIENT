@@ -33,7 +33,7 @@ namespace AFRICAN_FOOD.Services.Data
                 Email = email,
                 FirstName = firstName,
                 LastName = lastName,
-                UserName = userName,
+                UserPhone = userName,
                 Password = password,
                 TypeUser = typeuser
 
@@ -47,7 +47,7 @@ namespace AFRICAN_FOOD.Services.Data
             return !string.IsNullOrEmpty(_settingsService.UserIdSetting);
         }
 
-        public async Task<AuthenticationResponse> Authenticate(string userName, string password)
+        public async Task<AuthenticationResponse> Authenticate(string Email, string password)
         {
             UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
             {
@@ -56,7 +56,7 @@ namespace AFRICAN_FOOD.Services.Data
 
             AuthenticationRequest authenticationRequest = new AuthenticationRequest()
             {
-                UserName = userName,
+                Email = Email,
                 Password = password
             };
 

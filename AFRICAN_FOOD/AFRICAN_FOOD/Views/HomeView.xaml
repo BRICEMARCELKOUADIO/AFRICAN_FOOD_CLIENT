@@ -31,8 +31,8 @@
                         </Grid.RowDefinitions>
                         <Image HeightRequest="200" Grid.Row="0" Source="header1.jpg" Aspect="AspectFill"></Image>
                         <StackLayout Grid.Row="1">
-                            <Label Text="PIES OF THE WEEK" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
-                            <Label Text="Our weekly selection" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label Text="Trouver les produits promotionnels" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                            <Label Text="Notre sélection hebdomadaire" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
                         </StackLayout>
                     </Grid>
                 </DataTemplate>
@@ -66,15 +66,15 @@
                 <DataTemplate>
                     <Grid RowSpacing="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="6*"></RowDefinition>
-                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <!--<RowDefinition Height="2*"></RowDefinition>-->
                         </Grid.RowDefinitions>
-                        <Grid BackgroundColor="White">
+                        <!--<Grid BackgroundColor="White">
                             <Image HeightRequest="200" Margin="10" WidthRequest="200" Source="springsale.jpg" ></Image>
-                        </Grid>
-                        <Grid Grid.Row="1">
+                        </Grid>-->
+                        <Grid Grid.Row="0">
                             <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
-                            <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                            <Label Text="© 2019 African Food" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
                         </Grid>
                     </Grid>
                 </DataTemplate>
