@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:AFRICAN_FOOD.Controls;assembly=AFRICAN_FOOD"
               xmlns:utility="clr-namespace:AFRICAN_FOOD.Utility;assembly=AFRICAN_FOOD"
              utility:ViewModelLocator.AutoWireViewModel="True"
-             Title="Contact Us"
+             Title="Contactez nous"
              x:Class="AFRICAN_FOOD.Views.ContactView">
     <ContentPage.Content>
         <ScrollView >
@@ -19,18 +19,18 @@
                 </Grid.RowDefinitions>
                 <Image HeightRequest="150" Grid.Row="0" Source="carousel1.jpg" Aspect="AspectFill"></Image>
                 <StackLayout VerticalOptions="FillAndExpand" Grid.Row="1" Margin="5">
-                    <Label Text="Contact us" Margin="0, 5" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label  Margin="0, 5" Text="Thank you so much for stopping by. Without the support of our fellow pie lovers, Bethany's Pie Shop wouldn't be possible. Though we have a wide selection of pies for your pleasure, we also do special orders and would love to bring the sweets for your next big event." Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label Margin="0, 5" Text="If you have an event coming up, have a special request or just want to talk about pies, use the form below to send us a message!" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Text="Contactez nous" Margin="0, 5" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label  Margin="0, 5" Text="Merci beaucoup de votre visite. Sans le soutien de nos compagnons amateurs de pâtés en croûte, Bethany Pie Shop ne serait pas possible. Bien que nous ayons une large sélection de tartes pour votre plaisir, nous effectuons également des commandes spéciales et nous aimerions apporter les bonbons pour votre prochain grand événement." Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Margin="0, 5" Text="Si vous avez un événement à venir, si vous avez une demande particulière ou si vous souhaitez simplement parler de tartes, utilisez le formulaire ci-dessous pour nous envoyer un message!" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
                     <controls:RoundedEntry Placeholder="Email" Margin="0, 5" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Email, Mode=TwoWay}"/>
                     <controls:RoundedEntry Placeholder="Message" Margin="0, 5" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Message, Mode=TwoWay}"/>
-                    <Button Style="{StaticResource RegularButton}" Text="Submit comment" Command="{Binding SubmitMessageCommand}"></Button>
-                    <Label Margin="0, 5" Text="Or give us a call. You can call us directly from the app by clicking the button below!" Style="{StaticResource RegularStyle}"></Label>
-                    <Button Style="{StaticResource RegularButton}" Text="Call Us" Command="{Binding CallPhone}"></Button>
+                    <Button Style="{StaticResource RegularButton}" Text="Envoyer un commentaire" Command="{Binding SubmitMessageCommand}"></Button>
+                    <Label Margin="0, 5" Text="Ou appelez-nous. Vous pouvez nous appeler directement depuis l'application en cliquant sur le bouton ci-dessous!" Style="{StaticResource RegularStyle}"></Label>
+                    <Button Style="{StaticResource RegularButton}" Text="Appelez nous" Command="{Binding CallPhone}"></Button>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
                     <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
-                    <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                    <Label Text="© 2019 African Food" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
                 </StackLayout>
             </Grid>
         </ScrollView>

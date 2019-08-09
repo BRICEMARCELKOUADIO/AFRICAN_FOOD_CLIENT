@@ -28,7 +28,7 @@ namespace AFRICAN_FOOD
             AppContainer.RegisterDependencies();
 
             var shoppingCartViewModel = AppContainer.Resolve<ShoppingCartViewModel>();
-            shoppingCartViewModel.InitializeMessenger();
+           // shoppingCartViewModel.InitializeMessenger();
         }
 
         protected override void OnStart()

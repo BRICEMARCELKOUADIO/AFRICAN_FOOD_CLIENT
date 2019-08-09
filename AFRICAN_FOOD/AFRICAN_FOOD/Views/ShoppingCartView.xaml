@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="AFRICAN_FOOD.Views.ShoppingCartView"
              xmlns:behaviors="clr-namespace:AFRICAN_FOOD.Behaviors;assembly=AFRICAN_FOOD"
-             Title="Shopping Cart"
+             Title="VOTRE PANIER"
              xmlns:utility="clr-namespace:AFRICAN_FOOD.Utility;assembly=AFRICAN_FOOD"
              utility:ViewModelLocator.AutoWireViewModel="True"
              >
@@ -32,8 +32,8 @@
                             </Grid.RowDefinitions>
                             <Image HeightRequest="200" Grid.Row="0" Source="carousel3.jpg" Aspect="AspectFill"></Image>
                             <StackLayout Grid.Row="1">
-                                <Label Text="YOUR CART" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
-                                <Label Text="Check your order and head to checkout" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="VOTRE PANIER" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="Vérifiez votre commande et passez à la caisse" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
                             </StackLayout>
                         </Grid>
                     </DataTemplate>
@@ -109,7 +109,7 @@
                                 <Button Text="Checkout" Style="{StaticResource RegularButton}" Command="{Binding CheckOutCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
                             </Grid>
                             <Grid IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=False}" VerticalOptions="CenterAndExpand">
-                                <Label Text="Please add some pies first" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="S'il vous plaît ajouter des produits" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
                             </Grid>
                         </Grid>
                     </DataTemplate>
@@ -117,7 +117,7 @@
             </ListView>
             <Grid Grid.Row="1">
                 <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
-                <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                <Label Text="© 2019 African Food" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
             </Grid>
         </Grid>
     </ContentPage.Content>

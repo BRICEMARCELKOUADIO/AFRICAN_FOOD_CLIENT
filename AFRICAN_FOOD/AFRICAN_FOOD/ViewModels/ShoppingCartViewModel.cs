@@ -33,6 +33,7 @@ namespace AFRICAN_FOOD.ViewModels
             _settingsService = settingsService;
             _shoppingCartItems = new ObservableCollection<ShoppingCartItem>();
             _orderTotal = 0;
+            initialise();
         }
 
         public ICommand CheckOutCommand => new Command(OnCheckOut);
@@ -45,6 +46,32 @@ namespace AFRICAN_FOOD.ViewModels
                 _shoppingCartItems = value;
                 RecalculateBasket();
                 OnPropertyChanged();
+            }
+        }
+
+        private static Dictionary<string, Category> _categories;
+        public static Dictionary<string, Category> Categories
+        {
+            get
+            {
+                if (_categories == null)
+                {
+                    var categoryList = new[]
+                    {
+                        new Category { CategoryName = "Fruit pies" },
+                        new Category { CategoryName = "Cheese cakes" },
+                        new Category { CategoryName = "Seasonal pies" }
+                    };
+
+                    _categories = new Dictionary<string, Category>();
+
+                    foreach (Category category in categoryList)
+                    {
+                        _categories.Add(category.CategoryName, category);
+                    }
+                }
+
+                return _categories;
             }
         }
 
@@ -78,14 +105,14 @@ namespace AFRICAN_FOOD.ViewModels
             }
         }
 
-        public void InitializeMessenger()
-        {
-            MessagingCenter.Subscribe<PieDetailViewModel, Pie>(this, MessagingConstants.AddPieToBasket,
-                (pieDetailViewModel, pie) => OnAddPieToBasketReceived(pie));
-            MessagingCenter.Subscribe<HomeViewModel, Pie>(this, MessagingConstants.AddPieToBasket,
-                (homeViewModel, pie) => OnAddPieToBasketReceived(pie));
-            MessagingCenter.Subscribe<CheckoutViewModel>(this, "OrderPlaced", model => OnOrderPlaced());
-        }
+        //public void InitializeMessenger()
+        //{
+        //    MessagingCenter.Subscribe<PieDetailViewModel, Pie>(this, MessagingConstants.AddPieToBasket,
+        //        (pieDetailViewModel, pie) => OnAddPieToBasketReceived(pie));
+        //    MessagingCenter.Subscribe<HomeViewModel, Pie>(this, MessagingConstants.AddPieToBasket,
+        //        (homeViewModel, pie) => OnAddPieToBasketReceived(pie));
+        //    MessagingCenter.Subscribe<CheckoutViewModel>(this, "OrderPlaced", model => OnOrderPlaced());
+        //}
 
         private void OnCheckOut()
         {
@@ -99,8 +126,8 @@ namespace AFRICAN_FOOD.ViewModels
 
         private void RecalculateBasket()
         {
-            _orderTotal = CalculateOrderTotal();
-            Taxes = _orderTotal * (decimal)0.2;
+            _orderTotal = 33;//  CalculateOrderTotal();
+            Taxes = 5;//_orderTotal * (decimal)0.2;
             Shipping = _orderTotal * (decimal)0.1;
             GrandTotal = _orderTotal + _shipping + _taxes;
         }
@@ -117,21 +144,43 @@ namespace AFRICAN_FOOD.ViewModels
             return total;
         }
 
-        public override async Task InitializeAsync(object data)
+        //public override async Task InitializeAsync(object data)
+        //{
+        //    var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
+        //    ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+        //}
+
+
+        public void initialise()
         {
-            var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
-            ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+            _shoppingCartItems = new ObservableCollection<ShoppingCartItem>()
+            {
+                new ShoppingCartItem()
+                {
+                    Quantity =1,
+                    Pie = new Pie { Name = "Tarte à la fraise", Price = 15M, ShortDescription = "Notre délicieuse tarte aux fraises!", LongDescription = "Glaçage gâteau aux carottes Jelly-o Cheesecake. Sweet roll pain de tootsie à la guimauve au caramel à la guimauve et au brownie. Gateau au chocolat pain d 'epice tootsie rouler gateau a l' avoine tarte barre de chocolat drage brownie. Sucette à la barbe à papa en coton. Tarte dragée aux cannes de bonbon. Pâte à sucer dragée gélatine sucette jujubes barre de chocolat cannes de bonbon. Glaçage pain d'épice chupa chups coton bonbon biscuit bonbons glaçage bonbons gélifiés. Gummies brownie sucette biscuit gâteau au chocolat danois. Tarte danoise au beignet au chocolat et aux macarons. Gâteau à la carotte dragée croissant citron gouttes réglisse citron gouttes biscuit sucette au caramel. Gâteau aux carottes Gâteau aux carottes Réglisse Sucre Prune surmontant des jujubes à la tarte aux bonbons. Les caramels à tarte gaufrette gaufrette portent une griffe. Tiramisu tarte tarte au citron danois gouttes. Brownie cupcake dragée gummies.", Category = Categories["Fruit pies"], ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrypie.jpg", InStock = true, IsPieOfTheWeek = false, ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrypiesmall.jpg", AllergyInformation = "" },
+                    PieId = 1,
+                    ShoppingCartItemId =1
+                },
+                new ShoppingCartItem()
+                {
+                    Quantity =1,
+                    Pie = new Pie { Name = "Gâteau Au Fromage Aux Fraises", Price = 18M, ShortDescription = "Tu vas l'adorer!", LongDescription = "Glaçage gâteau aux carottes Jelly-o Cheesecake. Sweet roll pain de tootsie à la guimauve au caramel à la guimauve et au brownie. Gateau au chocolat pain d 'epice tootsie rouler gateau a l' avoine tarte barre de chocolat drage brownie. Sucette à la barbe à papa en coton. Tarte dragée aux cannes de bonbon. Pâte à sucer dragée gélatine sucette jujubes barre de chocolat cannes de bonbon. Glaçage pain d'épice chupa chups coton bonbon biscuit bonbons glaçage bonbons gélifiés. Gummies brownie sucette biscuit gâteau au chocolat danois. Tarte danoise au beignet au chocolat et aux macarons. Gâteau à la carotte dragée croissant citron gouttes réglisse citron gouttes biscuit sucette au caramel. Gâteau aux carottes Gâteau aux carottes Réglisse Sucre Prune surmontant des jujubes à la tarte aux bonbons. Les caramels à tarte gaufrette gaufrette portent une griffe. Tiramisu tarte tarte au citron danois gouttes. Brownie cupcake dragée gummies.", Category = Categories["Cheese cakes"], ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrycheesecake.jpg", InStock = false, IsPieOfTheWeek = false, ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrycheesecakesmall.jpg", AllergyInformation = "" },
+                    PieId = 1,
+                    ShoppingCartItemId =1
+                }
+            };
         }
 
-        private async void OnAddPieToBasketReceived(Pie pie)
-        {
-            var shoppingCartItem = new ShoppingCartItem() { Pie = pie, PieId = pie.PieId, Quantity = 1 };
+        //private async void OnAddPieToBasketReceived(Pie pie)
+        //{
+        //    var shoppingCartItem = new ShoppingCartItem() { Pie = pie, PieId = pie.PieId, Quantity = 1 };
 
-            await _shoppingCartService.AddShoppingCartItem(shoppingCartItem, _settingsService.UserIdSetting);
+        //    await _shoppingCartService.AddShoppingCartItem(shoppingCartItem, _settingsService.UserIdSetting);
 
-            ShoppingCartItems.Add(shoppingCartItem);
+        //    ShoppingCartItems.Add(shoppingCartItem);
 
-            RecalculateBasket();
-        }
+        //    RecalculateBasket();
+        //}
     }
 }

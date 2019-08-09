@@ -8,7 +8,7 @@
              xmlns:utility="clr-namespace:AFRICAN_FOOD.Utility;assembly=AFRICAN_FOOD"
              utility:ViewModelLocator.AutoWireViewModel="True"
              BackgroundImage="darktexture.jpg" 
-             Title="All Pies"
+             Title="TOUTES LES PUBLICATIONS"
              x:Name="PieCatalogViewPage"
              x:Class="AFRICAN_FOOD.Views.PieCatalogView"
              >
@@ -76,7 +76,7 @@
                         </Grid>
                         <Grid Grid.Row="1">
                             <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
-                            <Label Text="© 2018 Bethany's Pie Shop" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                            <Label Text="© 2019 African Food" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
                         </Grid>
                     </Grid>
                 </DataTemplate>

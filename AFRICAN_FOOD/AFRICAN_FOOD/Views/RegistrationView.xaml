@@ -29,10 +29,10 @@
                        CornerRadius="10" Margin="0, 25, 0, 25"
                        >
                 <StackLayout Margin="0, 30">
-                    <Label Text="Registration" Style="{StaticResource PageHeaderStyle}"></Label>
+                    <Label Text="Enregistrement" Style="{StaticResource PageHeaderStyle}"></Label>
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Already a member? " Style="{StaticResource RegularStyle}"></Label>
-                        <Label Text="Sign in!" Style="{StaticResource LinkStyle}">
+                        <Label Text="Déjà membre?" Style="{StaticResource RegularStyle}"></Label>
+                        <Label Text="Se connecter!" Style="{StaticResource LinkStyle}">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer            
                                         Command="{Binding LoginCommand}"  
@@ -40,12 +40,12 @@
                             </Label.GestureRecognizers>
                         </Label>
                     </StackLayout>
-                    <controls:RoundedEntry Placeholder="First Name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding FirstName, Mode=TwoWay}"/>
-                    <controls:RoundedEntry Placeholder="Last Name" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding LastName, Mode=TwoWay}"/>
+                    <controls:RoundedEntry Placeholder="Nom" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding FirstName, Mode=TwoWay}"/>
+                    <controls:RoundedEntry Placeholder="Prenom" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding LastName, Mode=TwoWay}"/>
                     <controls:RoundedEntry Placeholder="Email" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Email, Mode=TwoWay}"/>
                     <controls:RoundedEntry Placeholder="Phone" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding UserPhone, Mode=TwoWay}"/>
-                    <controls:RoundedEntry IsPassword="True" Placeholder="Password" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"/>
-                    <Button Style="{StaticResource RegularButton}" Text="Register" Command="{Binding RegisterCommand}"></Button>
+                    <controls:RoundedEntry IsPassword="True" Placeholder="Mot de Passe" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"/>
+                    <Button Style="{StaticResource RegularButton}" Text="S'enregistrer" Command="{Binding RegisterCommand}"></Button>
                 </StackLayout>
             </Frame>
             <Frame  AbsoluteLayout.LayoutFlags="PositionProportional" Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="Transparent"

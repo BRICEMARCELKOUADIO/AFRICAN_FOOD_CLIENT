@@ -8,7 +8,7 @@
              xmlns:templates="clr-namespace:AFRICAN_FOOD.Templates;assembly=AFRICAN_FOOD"
              xmlns:utility="clr-namespace:AFRICAN_FOOD.Utility;assembly=AFRICAN_FOOD"
              utility:ViewModelLocator.AutoWireViewModel="True"
-             Title="Welcome" BackgroundImage="darktexture.jpg" 
+             Title="Bienvenue" BackgroundImage="darktexture.jpg" 
              x:Name="HomeViewPage"
              x:Class="AFRICAN_FOOD.Views.HomeView"
              >
