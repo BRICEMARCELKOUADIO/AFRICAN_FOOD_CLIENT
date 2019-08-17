@@ -33,7 +33,7 @@
                             <Image HeightRequest="200" Grid.Row="0" Source="carousel3.jpg" Aspect="AspectFill"></Image>
                             <StackLayout Grid.Row="1">
                                 <Label Text="VOTRE PANIER" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
-                                <Label Text="Vérifiez votre commande et passez à la caisse" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="Vérifiez votre commande" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
                             </StackLayout>
                         </Grid>
                     </DataTemplate>
@@ -82,22 +82,22 @@
                     <DataTemplate>
                         <Grid RowSpacing="0" Margin="3, 0" >
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="6*"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid BackgroundColor="White" IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=True}">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="15"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <!--<RowDefinition Height="15"></RowDefinition>
                                     <RowDefinition Height="15"></RowDefinition>
                                     <RowDefinition Height="15"></RowDefinition>
                                     <RowDefinition Height="25"></RowDefinition>
-                                    <RowDefinition Height="50"></RowDefinition>
+                                    <RowDefinition Height="50"></RowDefinition>-->
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Your order" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RegularStyle}"></Label>
+                                <!--<Label Text="Your order" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RegularStyle}"></Label>
                                 <Label Text="Purchase total" Grid.Row="1" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}" ></Label>
                                 <Label Text="Taxes" Grid.Row="2" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
                                 <Label Text="Shipping" Grid.Row="3" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
@@ -105,8 +105,8 @@
                                 <Label Text="{Binding OrderTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="1" Grid.Column="1" ></Label>
                                 <Label Text="{Binding Taxes, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="2" Grid.Column="1" ></Label>
                                 <Label Text="{Binding Shipping, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="3" Grid.Column="1" ></Label>
-                                <Label Text="{Binding GrandTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTotalStyle}" Grid.Row="4"  Grid.Column="1" ></Label>
-                                <Button Text="Checkout" Style="{StaticResource RegularButton}" Command="{Binding CheckOutCommand}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
+                                <Label Text="{Binding GrandTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTotalStyle}" Grid.Row="4"  Grid.Column="1" ></Label>-->
+                                <Button Text="VALIDER" Style="{StaticResource RegularButton}" Command="{Binding CheckOutCommand}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>
                             </Grid>
                             <Grid IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=False}" VerticalOptions="CenterAndExpand">
                                 <Label Text="S'il vous plaît ajouter des produits" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>

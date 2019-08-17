@@ -114,9 +114,11 @@ namespace AFRICAN_FOOD.ViewModels
         //    MessagingCenter.Subscribe<CheckoutViewModel>(this, "OrderPlaced", model => OnOrderPlaced());
         //}
 
-        private void OnCheckOut()
+        private async void OnCheckOut()
         {
-            _navigationService.NavigateToAsync<CheckoutViewModel>();
+            await _dialogService.ShowDialog("Commande passée avec succès", "Succès", "OK");
+            await _navigationService.PopToRootAsync();
+            //_navigationService.NavigateToAsync<CheckoutViewModel>();
         }
 
         private void OnOrderPlaced()

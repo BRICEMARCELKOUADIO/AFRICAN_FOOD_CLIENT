@@ -7,11 +7,18 @@
               xmlns:behaviors="clr-namespace:AFRICAN_FOOD.Behaviors;assembly=AFRICAN_FOOD"
              xmlns:templates="clr-namespace:AFRICAN_FOOD.Templates;assembly=AFRICAN_FOOD"
              xmlns:utility="clr-namespace:AFRICAN_FOOD.Utility;assembly=AFRICAN_FOOD"
+             xmlns:convertor="clr-namespace:AFRICAN_FOOD.Converters;assembly=AFRICAN_FOOD"
              utility:ViewModelLocator.AutoWireViewModel="True"
              Title="Bienvenue" BackgroundImage="darktexture.jpg" 
              x:Name="HomeViewPage"
              x:Class="AFRICAN_FOOD.Views.HomeView"
              >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convertor:InverseBooleanConverter x:Key="boolConvertor" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <Grid>
         <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding PiesOfTheWeek}" CachingStrategy="RecycleElement"
             SeparatorVisibility="None" 
@@ -40,10 +47,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Frame Margin="10" Padding="10" HeightRequest="200" >
-                            <Grid Margin="1" BackgroundColor="White" RowSpacing="0" HeightRequest="200" >
+                        <Frame Margin="10" Padding="10" HeightRequest="200" IsEnabled="{Binding InStock}" >
+                            <Grid Margin="1" BackgroundColor="White" RowSpacing="0" HeightRequest="200" IsEnabled="{Binding InStock}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="6*"></RowDefinition>
+                                    <RowDefinition Height="1*"></RowDefinition>
                                     <RowDefinition Height="1*"></RowDefinition>
                                     <RowDefinition Height="1*"></RowDefinition>
                                     <RowDefinition Height="2*"></RowDefinition>
@@ -55,8 +63,11 @@
                                 <Image Grid.Row="0" Grid.ColumnSpan="2" Aspect="AspectFill" Source="{Binding ImageUrl}" HeightRequest="100" WidthRequest="100"></Image>
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Name}" Style="{StaticResource PieTileNameStyle}"></Label>
                                 <Label Grid.Row="1" Grid.Column="1"  Text="{Binding Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
-                                <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>
-                                <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="Add to cart" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference HomeViewPage}, Path=BindingContext.AddToCartCommand}" CommandParameter="{Binding}"></Button>
+                                <Label Grid.Row="2" Grid.Column="1"  Text="Statut: " Margin="0,0,65,0" Style="{StaticResource PieTilePriceStyle}" ></Label>
+                                <Label Grid.Row="2" Grid.Column="1" IsVisible="{Binding InStock}" IsEnabled="{Binding InStock}"  Text="En Stock"  Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
+                                <Label Grid.Row="2" Grid.Column="1" IsVisible="{Binding InStock, Converter={StaticResource boolConvertor}}" IsEnabled="{Binding InStock,Converter={StaticResource boolConvertor}}"  Text="Stock Epuisé" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
+                                <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>
+                                <Button Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Text="Add to cart" IsEnabled="{Binding InStock}" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference HomeViewPage}, Path=BindingContext.AddToCartCommand}" CommandParameter="{Binding}"></Button>
                             </Grid>
                         </Frame>
                     </ViewCell>
