@@ -23,7 +23,7 @@
         </Grid>
         <Grid Grid.Row="1">
             <ListView ItemsSource="{Binding MenuItems}"  CachingStrategy="RecycleElement"
-                SeparatorVisibility="None" HasUnevenRows="True" >
+                SeparatorVisibility="None" HasUnevenRows="True"  >
                 <ListView.Behaviors>
                     <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding MenuItemTappedCommand}"></behaviors:EventToCommandBehavior>
                 </ListView.Behaviors>
