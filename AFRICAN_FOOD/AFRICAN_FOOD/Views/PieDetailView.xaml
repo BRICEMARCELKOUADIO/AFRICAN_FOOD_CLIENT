@@ -13,6 +13,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <convertor:InverseBooleanConverter x:Key="boolConvertor" />
+            <convertor:ByteToImageFieldConverter x:Key="convertorImage"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -20,13 +21,13 @@
         <ScrollView>
             <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="250"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image HeightRequest="150" Grid.Row="0" Source="{Binding SelectedPie.ImageUrl}" Aspect="AspectFill" VerticalOptions="StartAndExpand"></Image>
+                <Image HeightRequest="250" Grid.Row="0" Source="{Binding SelectedPie.Image,Converter={StaticResource convertorImage}}" Aspect="Fill" VerticalOptions="StartAndExpand"></Image>
                 <Button Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" IsVisible="{Binding SelectedPie.InStock}" Margin="0,0,10,0" Text="Add to cart" 
                         Style="{StaticResource RegularButton}" Command="{Binding AddToCartCommand}"></Button>
                 <Grid Grid.Row="1" Margin="5,5,5,0" BackgroundColor="White" RowSpacing="2">
@@ -45,9 +46,9 @@
                         <Label  IsVisible="{Binding SelectedPie.InStock}" IsEnabled="{Binding SelectedPie.InStock}"  Text="En Stock"  Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                         <Label  IsVisible="{Binding SelectedPie.InStock, Converter={StaticResource boolConvertor}}" IsEnabled="{Binding SelectedPie.InStock,Converter={StaticResource boolConvertor}}"  Text="Stock Epuisé" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                     </StackLayout>
-                    <Label Grid.Column="0" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding SelectedPie.ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>
+                    <!--<Label Grid.Column="0" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding SelectedPie.ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>-->
                 </Grid>
-                <Label Margin="5" Style="{StaticResource PieLongDescriptionStyle}" Grid.Row="2" Text="{Binding SelectedPie.LongDescription}"></Label>
+                <Label Margin="5" Style="{StaticResource PieLongDescriptionStyle}" Grid.Row="2" Text="{Binding SelectedPie.ShortDescription}"></Label>
                 <!--<Button Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,10,0" 
                         Text="Read description" Style="{StaticResource RegularButton}" Command="{Binding ReadDescriptionCommand}"></Button>-->
                 <Grid Grid.Row="4">

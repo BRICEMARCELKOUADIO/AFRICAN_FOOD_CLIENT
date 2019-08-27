@@ -33,7 +33,7 @@ namespace AFRICAN_FOOD.ViewModels
             _settingsService = settingsService;
             _shoppingCartItems = new ObservableCollection<ShoppingCartItem>();
             _orderTotal = 0;
-            initialise();
+            //initialise();
         }
 
         public ICommand CheckOutCommand => new Command(OnCheckOut);
@@ -134,55 +134,55 @@ namespace AFRICAN_FOOD.ViewModels
             GrandTotal = _orderTotal + _shipping + _taxes;
         }
 
-        private decimal CalculateOrderTotal()
-        {
-            decimal total = 0;
-
-            foreach (var shoppingCartItem in ShoppingCartItems)
-            {
-                total += shoppingCartItem.Quantity * shoppingCartItem.Pie.Price;
-            }
-
-            return total;
-        }
-
-        //public override async Task InitializeAsync(object data)
+        //private decimal CalculateOrderTotal()
         //{
-        //    var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
-        //    ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+        //    decimal total = 0;
+
+        //    foreach (var shoppingCartItem in ShoppingCartItems)
+        //    {
+        //        total += shoppingCartItem.Quantity * shoppingCartItem.Pie.Price;
+        //    }
+
+        //    return total;
         //}
 
-
-        public void initialise()
+        public override async Task InitializeAsync(object data)
         {
-            _shoppingCartItems = new ObservableCollection<ShoppingCartItem>()
-            {
-                new ShoppingCartItem()
-                {
-                    Quantity =1,
-                    Pie = new Pie { Name = "Tarte à la fraise", Price = 15M, ShortDescription = "Notre délicieuse tarte aux fraises!", LongDescription = "Glaçage gâteau aux carottes Jelly-o Cheesecake. Sweet roll pain de tootsie à la guimauve au caramel à la guimauve et au brownie. Gateau au chocolat pain d 'epice tootsie rouler gateau a l' avoine tarte barre de chocolat drage brownie. Sucette à la barbe à papa en coton. Tarte dragée aux cannes de bonbon. Pâte à sucer dragée gélatine sucette jujubes barre de chocolat cannes de bonbon. Glaçage pain d'épice chupa chups coton bonbon biscuit bonbons glaçage bonbons gélifiés. Gummies brownie sucette biscuit gâteau au chocolat danois. Tarte danoise au beignet au chocolat et aux macarons. Gâteau à la carotte dragée croissant citron gouttes réglisse citron gouttes biscuit sucette au caramel. Gâteau aux carottes Gâteau aux carottes Réglisse Sucre Prune surmontant des jujubes à la tarte aux bonbons. Les caramels à tarte gaufrette gaufrette portent une griffe. Tiramisu tarte tarte au citron danois gouttes. Brownie cupcake dragée gummies.", Category = Categories["Fruit pies"], ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrypie.jpg", InStock = true, IsPieOfTheWeek = false, ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrypiesmall.jpg", AllergyInformation = "" },
-                    PieId = 1,
-                    ShoppingCartItemId =1
-                },
-                new ShoppingCartItem()
-                {
-                    Quantity =1,
-                    Pie = new Pie { Name = "Gâteau Au Fromage Aux Fraises", Price = 18M, ShortDescription = "Tu vas l'adorer!", LongDescription = "Glaçage gâteau aux carottes Jelly-o Cheesecake. Sweet roll pain de tootsie à la guimauve au caramel à la guimauve et au brownie. Gateau au chocolat pain d 'epice tootsie rouler gateau a l' avoine tarte barre de chocolat drage brownie. Sucette à la barbe à papa en coton. Tarte dragée aux cannes de bonbon. Pâte à sucer dragée gélatine sucette jujubes barre de chocolat cannes de bonbon. Glaçage pain d'épice chupa chups coton bonbon biscuit bonbons glaçage bonbons gélifiés. Gummies brownie sucette biscuit gâteau au chocolat danois. Tarte danoise au beignet au chocolat et aux macarons. Gâteau à la carotte dragée croissant citron gouttes réglisse citron gouttes biscuit sucette au caramel. Gâteau aux carottes Gâteau aux carottes Réglisse Sucre Prune surmontant des jujubes à la tarte aux bonbons. Les caramels à tarte gaufrette gaufrette portent une griffe. Tiramisu tarte tarte au citron danois gouttes. Brownie cupcake dragée gummies.", Category = Categories["Cheese cakes"], ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrycheesecake.jpg", InStock = false, IsPieOfTheWeek = false, ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrycheesecakesmall.jpg", AllergyInformation = "" },
-                    PieId = 1,
-                    ShoppingCartItemId =1
-                }
-            };
+            var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
+            ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
         }
 
-        //private async void OnAddPieToBasketReceived(Pie pie)
+
+        //public void initialise()
         //{
-        //    var shoppingCartItem = new ShoppingCartItem() { Pie = pie, PieId = pie.PieId, Quantity = 1 };
+        //    _shoppingCartItems = new ObservableCollection<ShoppingCartItem>()
+        //    {
+        //        new ShoppingCartItem()
+        //        {
+        //            Quantity =1,
+        //            Pie = new Pie { Name = "Tarte à la fraise", Price = 15M, ShortDescription = "Notre délicieuse tarte aux fraises!", LongDescription = "Glaçage gâteau aux carottes Jelly-o Cheesecake. Sweet roll pain de tootsie à la guimauve au caramel à la guimauve et au brownie. Gateau au chocolat pain d 'epice tootsie rouler gateau a l' avoine tarte barre de chocolat drage brownie. Sucette à la barbe à papa en coton. Tarte dragée aux cannes de bonbon. Pâte à sucer dragée gélatine sucette jujubes barre de chocolat cannes de bonbon. Glaçage pain d'épice chupa chups coton bonbon biscuit bonbons glaçage bonbons gélifiés. Gummies brownie sucette biscuit gâteau au chocolat danois. Tarte danoise au beignet au chocolat et aux macarons. Gâteau à la carotte dragée croissant citron gouttes réglisse citron gouttes biscuit sucette au caramel. Gâteau aux carottes Gâteau aux carottes Réglisse Sucre Prune surmontant des jujubes à la tarte aux bonbons. Les caramels à tarte gaufrette gaufrette portent une griffe. Tiramisu tarte tarte au citron danois gouttes. Brownie cupcake dragée gummies.", Category = Categories["Fruit pies"], ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrypie.jpg", InStock = true, IsPieOfTheWeek = false, ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrypiesmall.jpg", AllergyInformation = "" },
+        //            PieId = 1,
+        //            ShoppingCartItemId =1
+        //        },
+        //        new ShoppingCartItem()
+        //        {
+        //            Quantity =1,
+        //            Pie = new Pie { Name = "Gâteau Au Fromage Aux Fraises", Price = 18M, ShortDescription = "Tu vas l'adorer!", LongDescription = "Glaçage gâteau aux carottes Jelly-o Cheesecake. Sweet roll pain de tootsie à la guimauve au caramel à la guimauve et au brownie. Gateau au chocolat pain d 'epice tootsie rouler gateau a l' avoine tarte barre de chocolat drage brownie. Sucette à la barbe à papa en coton. Tarte dragée aux cannes de bonbon. Pâte à sucer dragée gélatine sucette jujubes barre de chocolat cannes de bonbon. Glaçage pain d'épice chupa chups coton bonbon biscuit bonbons glaçage bonbons gélifiés. Gummies brownie sucette biscuit gâteau au chocolat danois. Tarte danoise au beignet au chocolat et aux macarons. Gâteau à la carotte dragée croissant citron gouttes réglisse citron gouttes biscuit sucette au caramel. Gâteau aux carottes Gâteau aux carottes Réglisse Sucre Prune surmontant des jujubes à la tarte aux bonbons. Les caramels à tarte gaufrette gaufrette portent une griffe. Tiramisu tarte tarte au citron danois gouttes. Brownie cupcake dragée gummies.", Category = Categories["Cheese cakes"], ImageUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrycheesecake.jpg", InStock = false, IsPieOfTheWeek = false, ImageThumbnailUrl = "https://gillcleerenpluralsight.blob.core.windows.net/files/strawberrycheesecakesmall.jpg", AllergyInformation = "" },
+        //            PieId = 1,
+        //            ShoppingCartItemId =1
+        //        }
+        //    };
+        //}
 
-        //    await _shoppingCartService.AddShoppingCartItem(shoppingCartItem, _settingsService.UserIdSetting);
+        //private async void onaddpietobasketreceived(pie pie)
+        //{
+        //    var shoppingcartitem = new shoppingcartitem() { pie = pie, pieid = pie.pieid, quantity = 1 };
 
-        //    ShoppingCartItems.Add(shoppingCartItem);
+        //    await _shoppingcartservice.addshoppingcartitem(shoppingcartitem, _settingsservice.useridsetting);
 
-        //    RecalculateBasket();
+        //    shoppingcartitems.add(shoppingcartitem);
+
+        //    recalculatebasket();
         //}
     }
 }

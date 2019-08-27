@@ -84,19 +84,23 @@ namespace AFRICAN_FOOD.ViewModels
 
         private async void OnRegister()
         {
-            //if (_connectionService.IsConnected)
-            //{
+            if (_connectionService.IsConnected)
+            {
 
-            //    var userRegistered = await
-            //        _authenticationService.Register(_firstName, _lastName, _email, true, _userPhone, _password); ;
+                var userRegistered = await
+                    _authenticationService.Register(_firstName, _lastName, _email, false, _userPhone, _password); ;
 
-            //    if (userRegistered.IsAuthenticated)
-            //    {
+                if (userRegistered.IsAuthenticated)
+                {
                     await _dialogService.ShowDialog("inscription réussi", "", "OK");
-                    _settingsService.UserIdSetting = "123"; //userRegistered.User.Id;
+                    _settingsService.UserIdSetting = userRegistered.User.Id;
                     await _navigationService.NavigateToAsync<LoginViewModel>();
-              //  }
-            //}
+                }
+            }
+            else
+            {
+                await _dialogService.ShowDialog("Vérifier votre connexion internet", "", "OK");
+            }
         }
 
         private void OnLogin()

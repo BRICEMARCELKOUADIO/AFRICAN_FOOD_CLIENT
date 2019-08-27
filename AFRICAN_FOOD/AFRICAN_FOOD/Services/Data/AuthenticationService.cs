@@ -39,7 +39,9 @@ namespace AFRICAN_FOOD.Services.Data
 
             };
 
-            return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(builder.ToString(), authenticationRequest);
+            var url = $"{ApiConstants.BaseApiUrl}{ ApiConstants.RegisterEndpoint}?FirstName={firstName}&LastName={lastName}&Email={email}&TypeUser={typeuser}&Password={password}";
+
+            return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(url, authenticationRequest);
         }
 
         public bool IsUserAuthenticated()
@@ -54,13 +56,15 @@ namespace AFRICAN_FOOD.Services.Data
                 Path = ApiConstants.AuthenticateEndpoint
             };
 
+            var url = $"{ApiConstants.BaseApiUrl}{ ApiConstants.AuthenticateEndpoint}?Email={Email}&password={password}";
+
             AuthenticationRequest authenticationRequest = new AuthenticationRequest()
             {
                 Email = Email,
                 Password = password
             };
 
-            return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(builder.ToString(), authenticationRequest);
+            return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(url, authenticationRequest);
         }
     }
 }
