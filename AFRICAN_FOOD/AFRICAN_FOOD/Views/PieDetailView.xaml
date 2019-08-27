@@ -35,14 +35,18 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
+                        <ColumnDefinition Width="150"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Text="{Binding SelectedPie.Name}" Margin="3" Style="{StaticResource PieTileNameStyle}"></Label>
-                    <Label Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedPie.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
-                    <StackLayout Grid.Row="1" Grid.Column="1" Margin="3" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
+                    <Label Grid.Row="0" Grid.Column="1" Margin="3,3,40,3" TextDecorations="Strikethrough" Text="{Binding SelectedPie.Price, Converter={StaticResource LocalCurrencyConverter}}" TextColor="Black" HorizontalTextAlignment="End"></Label>
+                    <Label Grid.Row="0" Grid.Column="1" Margin="3" Text="CFA" TextColor="Black" TextDecorations="Strikethrough" HorizontalTextAlignment="End"></Label>
+                    <Label Grid.Row="1" Grid.Column="1" Margin="3,3,40,3"  Text="{Binding SelectedPie.PrixPromotionnel, Converter={StaticResource LocalCurrencyConverter}}" TextColor="Green" HorizontalTextAlignment="End"></Label>
+                    <Label Grid.Row="1" Grid.Column="1" Margin="3"  Text="CFA" TextColor="Green" HorizontalTextAlignment="End"></Label>
+                    <StackLayout Grid.Row="2" Grid.Column="1" Margin="3" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
                         <Label  IsVisible="{Binding SelectedPie.InStock}" IsEnabled="{Binding SelectedPie.InStock}"  Text="En Stock"  Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                         <Label  IsVisible="{Binding SelectedPie.InStock, Converter={StaticResource boolConvertor}}" IsEnabled="{Binding SelectedPie.InStock,Converter={StaticResource boolConvertor}}"  Text="Stock Epuisé" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
                     </StackLayout>

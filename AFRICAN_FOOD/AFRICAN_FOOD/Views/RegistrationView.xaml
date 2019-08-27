@@ -28,7 +28,9 @@
                        BackgroundColor="White" HasShadow="true"
                        CornerRadius="10" Margin="0, 25, 0, 25"
                        >
+                <ScrollView>
                 <StackLayout Margin="0, 30">
+                    
                     <Label Text="Enregistrement" Style="{StaticResource PageHeaderStyle}"></Label>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Déjà membre?" Style="{StaticResource RegularStyle}"></Label>
@@ -47,6 +49,7 @@
                     <controls:RoundedEntry IsPassword="True" Placeholder="Mot de Passe" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Password, Mode=TwoWay}"/>
                     <Button Style="{StaticResource RegularButton}" Text="S'enregistrer" Command="{Binding RegisterCommand}"></Button>
                 </StackLayout>
+                </ScrollView>
             </Frame>
             <Frame  AbsoluteLayout.LayoutFlags="PositionProportional" Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="Transparent"
                     AbsoluteLayout.LayoutBounds="0.5,0,50,50" VerticalOptions="Fill" HorizontalOptions="Fill">
