@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.AFRICAN_FOOD">
     <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
-    <application android:label="AFRICAN_FOOD.Android"></application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_GPS" />
+  <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+  <uses-permission android:name="android.permission.ACCESS_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <application android:label="AFRICAN_FOOD.Android">
+      <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyBLwH9xmdCj1nGxyukSaF6Y2eCmJ1bsIC4" />
+     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    </application>
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+  <!--<uses-library android:name="org.apache.http.legacy" android:required="false" />-->
 </manifest>

@@ -24,6 +24,7 @@ namespace AFRICAN_FOOD.Services.Data
             UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
             {
                 Path = $"{ApiConstants.ShoppingCartEndpoint}/{userId}"
+                //Path = $"{ApiConstants.GetCommandClient}/{userId}"
             };
 
             var shoppingCart = await _genericRepository.GetAsync<ShoppingCart>(builder.ToString());
@@ -48,6 +49,17 @@ namespace AFRICAN_FOOD.Services.Data
                 await _genericRepository.PostAsync(builder.ToString(), userShoppingCartItem);
 
             return shoppingCartItem;
+        }
+
+        public async Task<ShoppingCartItem> DeleteShoppingItem(string userId, int ShoppingItem)
+        {
+            //UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
+            //{
+            //    Path = ApiConstants.DeleteShoppingItem + $"?userId={userId}&ShoppingItem={ShoppingItem}" //userId + "/" + ShoppingItem
+            //};
+            var url = $"{ApiConstants.BaseApiUrl}{ApiConstants.DeleteShoppingItem}?userId={userId}&ShoppingItem={ShoppingItem}";
+            var shoppingCart = await _genericRepository.GetAsync<ShoppingCartItem>(url);
+            return shoppingCart;
         }
     }
 }

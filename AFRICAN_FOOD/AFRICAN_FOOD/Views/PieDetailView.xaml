@@ -6,9 +6,10 @@
              mc:Ignorable="d"
               xmlns:utility="clr-namespace:AFRICAN_FOOD.Utility;assembly=AFRICAN_FOOD"
              utility:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              Title="Details"
              xmlns:convertor="clr-namespace:AFRICAN_FOOD.Converters;assembly=AFRICAN_FOOD"
-             x:Class="AFRICAN_FOOD.Views.PieDetailView">
+             x:Class="AFRICAN_FOOD.Views.PieDetailView" >
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -22,16 +23,18 @@
             <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="250"></RowDefinition>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="300"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Image HeightRequest="250" Grid.Row="0" Source="{Binding SelectedPie.Image,Converter={StaticResource convertorImage}}" Aspect="Fill" VerticalOptions="StartAndExpand"></Image>
-                <Button Grid.Row="0" VerticalOptions="End" HorizontalOptions="End" IsVisible="{Binding SelectedPie.InStock}" Margin="0,0,10,0" Text="Ajouter au panier" 
-                        Style="{StaticResource RegularButton}" Command="{Binding AddToCartCommand}"></Button>
+                
                 <Grid Grid.Row="1" Margin="5,5,5,0" BackgroundColor="White" RowSpacing="2">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -39,20 +42,45 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="150"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding SelectedPie.Name}" Margin="3" Style="{StaticResource PieTileNameStyle}"></Label>
-                    <Label Grid.Row="0" Grid.Column="1" Margin="3,3,40,3" TextDecorations="Strikethrough" Text="{Binding SelectedPie.Price, Converter={StaticResource LocalCurrencyConverter}}" TextColor="Black" HorizontalTextAlignment="End"></Label>
-                    <Label Grid.Row="0" Grid.Column="1" Margin="3" Text="CFA" TextColor="Black" TextDecorations="Strikethrough" HorizontalTextAlignment="End"></Label>
-                    <Label Grid.Row="1" Grid.Column="1" Margin="3,3,40,3"  Text="{Binding SelectedPie.PrixPromotionnel, Converter={StaticResource LocalCurrencyConverter}}" TextColor="Green" HorizontalTextAlignment="End"></Label>
-                    <Label Grid.Row="1" Grid.Column="1" Margin="3"  Text="CFA" TextColor="Green" HorizontalTextAlignment="End"></Label>
-                    <StackLayout Grid.Row="2" Grid.Column="1" Margin="3" Orientation="Horizontal" HorizontalOptions="EndAndExpand" >
-                        <Label  IsVisible="{Binding SelectedPie.InStock}" IsEnabled="{Binding SelectedPie.InStock}"  Text="En Stock"  Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
-                        <Label  IsVisible="{Binding SelectedPie.InStock, Converter={StaticResource boolConvertor}}" IsEnabled="{Binding SelectedPie.InStock,Converter={StaticResource boolConvertor}}"  Text="Stock Epuisé" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>
+                    <Label Grid.Row="0" Grid.Column="0" TextColor="Black" FontAttributes="Bold" FontSize="18" Text="{Binding SelectedPie.Name}" Margin="3" Style="{StaticResource PieTileNameStyle}"></Label>
+                    
+                    <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding SelectedPie.ShortDescription}" TextColor="Black" FontSize="14" Style="{StaticResource PieTileDescriptionStyle}"></Label>
+                    <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                        <Label Grid.Row="3" Grid.Column="0" TextColor="Black" FontSize="14" TextDecorations="Strikethrough" Text="{Binding SelectedPie.Price, Converter={StaticResource LocalCurrencyConverter}}" HorizontalTextAlignment="Start"></Label>
+                        <Label Grid.Row="3" Grid.Column="0" FontSize="14" Text="CFA" TextColor="Black" TextDecorations="Strikethrough" HorizontalTextAlignment="Start"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
+                        <Label Grid.Row="4" Grid.Column="0" TextColor="Green" FontAttributes="Bold" FontSize="14" Text="{Binding SelectedPie.PrixPromotionnel, Converter={StaticResource LocalCurrencyConverter}}" HorizontalTextAlignment="Start"></Label>
+                        <Label Grid.Row="4" Grid.Column="0" TextColor="Green" FontAttributes="Bold" FontSize="14" Text="CFA"  HorizontalTextAlignment="Start"></Label>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
+                        <Label Grid.Row="5" Grid.Column="0" TextColor="Black"  FontAttributes="Bold" FontSize="14" Text="Statut: " Style="{StaticResource PieTilePriceStyle}" ></Label>
+                        <Label Grid.Row="5" Grid.Column="0" IsVisible="{Binding SelectedPie.InStock}" FontSize="14" IsEnabled="{Binding SelectedPie.InStock}" TextColor="Black" FontAttributes="Bold"  Text="En Stock"  Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="Start"></Label>
+                        <Label Grid.Row="5" Grid.Column="0" TextColor="Black" FontSize="14" FontAttributes="Bold" IsVisible="{Binding SelectedPie.InStock, Converter={StaticResource boolConvertor}}" IsEnabled="{Binding InStock,Converter={StaticResource boolConvertor}}"  Text="Stock Epuisé" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="Start"></Label>
+                    </StackLayout>
+                    <StackLayout  Orientation="Horizontal" Grid.Row="6" Grid.Column="0">
+                        <Label Grid.Row="5" Grid.Column="0" TextColor="Black"  FontAttributes="Bold" FontSize="14" Text="Numero du vendeur:" Style="{StaticResource PieTilePriceStyle}" ></Label>
+                        <Label Grid.Row="5" Grid.Column="0" TextColor="Black"  FontAttributes="Bold" FontSize="14" Text="{Binding SelectedPie.UserPhone}" Style="{StaticResource PieTilePriceStyle}" ></Label>
                     </StackLayout>
                     <!--<Label Grid.Column="0" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding SelectedPie.ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>-->
                 </Grid>
-                <Label Margin="5" Style="{StaticResource PieLongDescriptionStyle}" Grid.Row="2" Text="{Binding SelectedPie.ShortDescription}"></Label>
+                <Button Grid.Row="2" VerticalOptions="End" HorizontalOptions="End" IsVisible="{Binding SelectedPie.InStock}" Margin="0,0,10,0" Text="Commander" 
+                        Style="{StaticResource RegularButton}" Command="{Binding AddToCartCommand}"></Button>
+                <Grid Grid.Row="3">
+                    <map:Map x:Name="MyMap"  MapType="Street" HasZoomEnabled="True" >
+                        
+                        <!--<map:Map.ItemTemplate >
+        
+                              --><!--Address="{Binding Address}"--><!--
+                            <DataTemplate>
+                                <map:Pin Position="{Binding Position}" Type="Place" Label="ddddd"  />
+                            </DataTemplate>
+                        </map:Map.ItemTemplate>-->
+
+                    </map:Map>
+                </Grid>
                 <!--<Button Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,10,0" 
                         Text="Read description" Style="{StaticResource RegularButton}" Command="{Binding ReadDescriptionCommand}"></Button>-->
                 <Grid Grid.Row="4">

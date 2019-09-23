@@ -36,5 +36,12 @@ namespace AFRICAN_FOOD.Models
         public bool InStock { get; set; }
 
         public string UserAdminId { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+        
+        public string PositionGeo { get; set; }
+        public string UserPhone { get; set; }
+
+        public string AdminPhone { get; set; }
     }
 }

@@ -73,7 +73,7 @@ namespace AFRICAN_FOOD.ViewModels
 
             MenuItems.Add(new MainMenuItem
             {
-                MenuText = "Panier",
+                MenuText = "Commandes",
                 ViewModelToLoad = typeof(ShoppingCartViewModel),
                 MenuItemType = MenuItemType.ShoppingCart
             });

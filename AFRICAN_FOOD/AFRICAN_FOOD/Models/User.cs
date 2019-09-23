@@ -20,6 +20,11 @@ namespace AFRICAN_FOOD.Models
 
         public string CommerceLocate { get; set; }
 
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+        
+        public string PositionGeo { get; set; }
+
         public bool TypeUser { get; set; }
 
         public string Password { get; set; }

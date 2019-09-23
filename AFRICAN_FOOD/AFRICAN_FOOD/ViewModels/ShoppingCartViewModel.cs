@@ -19,6 +19,7 @@ namespace AFRICAN_FOOD.ViewModels
         private ObservableCollection<ShoppingCartItem> _shoppingCartItems;
         private readonly ISettingsService _settingsService;
         private readonly IShoppingCartDataService _shoppingCartService;
+        private readonly IDialogService _dialogService;
 
         private decimal _orderTotal;
         private decimal _taxes;
@@ -29,6 +30,7 @@ namespace AFRICAN_FOOD.ViewModels
             INavigationService navigationService, IDialogService dialogService,
             IShoppingCartDataService shoppingCartService, ISettingsService settingsService) : base(connectionService, navigationService, dialogService)
         {
+            _dialogService = dialogService;
             _shoppingCartService = shoppingCartService;
             _settingsService = settingsService;
             _shoppingCartItems = new ObservableCollection<ShoppingCartItem>();
@@ -37,6 +39,7 @@ namespace AFRICAN_FOOD.ViewModels
         }
 
         public ICommand CheckOutCommand => new Command(OnCheckOut);
+        public ICommand DelectShoppingCommand => new Command<ShoppingCartItem>(DelectShopping);
 
         public ObservableCollection<ShoppingCartItem> ShoppingCartItems
         {
@@ -126,12 +129,34 @@ namespace AFRICAN_FOOD.ViewModels
             ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
         }
 
+        private async void DelectShopping(ShoppingCartItem shoppingCartItem)
+        {
+            IsBusy = true;
+            var response = await _shoppingCartService.DeleteShoppingItem(_settingsService.UserIdSetting, shoppingCartItem.ShoppingCartItemId);
+            if (response != null)
+                await _dialogService.ShowDialog("Votre commande a été annuler", "", "Ok");
+            else
+                await _dialogService.ShowDialog("Error lors de l'annulation de votre commande", "", "Ok");
+
+            CommenRefresh();
+
+            IsBusy = false;
+        }
+
+
+        public async void CommenRefresh()
+        {
+            ShoppingCartItems.Clear();
+            var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
+            ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+        }
+
 
 
 
         private async void OnAddPieToBasketReceived(Pie pie)
         {
-            var shoppingCartItem = new ShoppingCartItem() { Pie = pie, PieId = pie.PieId, Quantity = 1 };
+            var shoppingCartItem = new ShoppingCartItem() { Pie = pie, PieId = pie.PieId, Quantity = 1, ClientNumber = _settingsService.ClientNumberSetting };
 
             await _shoppingCartService.AddShoppingCartItem(shoppingCartItem, _settingsService.UserIdSetting);
 

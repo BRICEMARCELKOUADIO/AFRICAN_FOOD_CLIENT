@@ -10,5 +10,6 @@ namespace AFRICAN_FOOD.Contracts.Services.Data
     {
         Task<ShoppingCart> GetShoppingCart(string userId);
         Task<ShoppingCartItem> AddShoppingCartItem(ShoppingCartItem shoppingCartItem, string userId);
+        Task<ShoppingCartItem> DeleteShoppingItem(string userId, int ShoppingItem);
     }
 }

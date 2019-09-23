@@ -11,9 +11,10 @@ namespace AFRICAN_FOOD.Models
         public Pie Pie { get; set; }
 
         public int PieId { get; set; }
+        public string ClientNumber { get; set; }
 
         public int Quantity { get; set; }
 
-        public decimal Total => Quantity * Pie.Price;
+        public decimal Total => Quantity * Pie.PrixPromotionnel;
     }
 }

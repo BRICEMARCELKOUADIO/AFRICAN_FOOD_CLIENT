@@ -12,6 +12,7 @@ namespace AFRICAN_FOOD.Services.General
         private readonly ISettings _settings;
         private const string UserName = "UserName";
         private const string UserId = "UserId";
+        private const string ClientNumber = "ClientNumber";
 
         public SettingsService()
         {
@@ -38,6 +39,10 @@ namespace AFRICAN_FOOD.Services.General
         {
             get => GetItem(UserId);
             set => AddItem(UserId, value);
+        }
+        public string ClientNumberSetting
+        { get => GetItem(ClientNumber);
+            set => AddItem(ClientNumber, value);
         }
     }
 }

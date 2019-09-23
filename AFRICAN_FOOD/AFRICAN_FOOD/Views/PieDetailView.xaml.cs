@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AFRICAN_FOOD.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,14 @@ namespace AFRICAN_FOOD.Views
         public PieDetailView()
         {
             InitializeComponent();
+            
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Bootstrap.AppContainer.Resolve<PieDetailViewModel>().ViewModelMap = MyMap;
+            
         }
     }
 }

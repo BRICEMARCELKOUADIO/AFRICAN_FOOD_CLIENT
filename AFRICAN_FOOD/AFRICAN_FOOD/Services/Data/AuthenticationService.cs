@@ -21,7 +21,7 @@ namespace AFRICAN_FOOD.Services.Data
 
         }
 
-        public async Task<AuthenticationResponse> Register(string firstName, string lastName, string email, bool typeuser, string userName, string password)
+        public async Task<AuthenticationResponse> Register(string firstName, string lastName, string email, bool typeuser, string userPhone,double longitude, double latitude, string position, string password)
         {
             UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
             {
@@ -33,13 +33,13 @@ namespace AFRICAN_FOOD.Services.Data
                 Email = email,
                 FirstName = firstName,
                 LastName = lastName,
-                UserPhone = userName,
+                UserPhone = userPhone,
                 Password = password,
                 TypeUser = typeuser
 
             };
 
-            var url = $"{ApiConstants.BaseApiUrl}{ ApiConstants.RegisterEndpoint}?FirstName={firstName}&LastName={lastName}&Email={email}&TypeUser={typeuser}&Password={password}";
+            var url = $"{ApiConstants.BaseApiUrl}{ ApiConstants.RegisterEndpoint}?FirstName={firstName}&LastName={lastName}&Email={email}&TypeUser={typeuser}&UserPhone={userPhone}&Longitude={longitude}&Latitude={latitude}&PositionGeo={position}&Password={password}";
 
             return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(url, authenticationRequest);
         }
