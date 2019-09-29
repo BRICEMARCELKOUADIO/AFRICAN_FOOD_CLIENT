@@ -17,6 +17,9 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
+            <StackLayout IsVisible="{Binding IsCommandLoaded}" IsEnabled="{Binding IsCommandLoaded}" HorizontalOptions="Center" VerticalOptions="Center">
+                <ActivityIndicator IsRunning="{Binding IsCommandLoaded}" Color="#ffcc80" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="40" WidthRequest="40"/>
+            </StackLayout>
             <ListView VerticalOptions="FillAndExpand" Header="{Binding .}" Footer="{Binding .}" ItemsSource="{Binding ShoppingCartItems}" CachingStrategy="RecycleElement" 
                 SeparatorVisibility="None" HasUnevenRows="True">
                 <ListView.Behaviors>

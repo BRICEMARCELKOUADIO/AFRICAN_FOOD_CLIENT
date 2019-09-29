@@ -30,6 +30,17 @@ namespace AFRICAN_FOOD.ViewModels
             //initialise();
         }
 
+        private bool _isLoadProduct = false;
+        public bool IsLoadProduct
+        {
+            get => _isLoadProduct;
+            set
+            {
+                _isLoadProduct = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand PieTappedCommand => new Command<Pie>(OnPieTapped);
         public ICommand AddToCartCommand => new Command<Pie>(OnAddToCart);
 
@@ -45,7 +56,9 @@ namespace AFRICAN_FOOD.ViewModels
 
         public override async Task InitializeAsync(object data)
         {
-          PiesOfTheWeek = (await _catalogDataService.GetPiesOfTheWeekAsync()).ToObservableCollection();
+            IsLoadProduct = true;
+            PiesOfTheWeek = (await _catalogDataService.GetPiesOfTheWeekAsync()).ToObservableCollection();
+            IsLoadProduct = false;
         }
 
         private void OnPieTapped(Pie selectedPie)

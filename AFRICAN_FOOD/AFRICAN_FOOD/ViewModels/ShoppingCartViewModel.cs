@@ -52,6 +52,16 @@ namespace AFRICAN_FOOD.ViewModels
             }
         }
 
+        private bool _isCommandLoaded = false;
+        public bool IsCommandLoaded
+        {
+            get => _isCommandLoaded;
+            set
+            {
+                _isCommandLoaded = value;
+                OnPropertyChanged();
+            }
+        }
         public decimal GrandTotal
         {
             get => _grandTotal;
@@ -125,8 +135,10 @@ namespace AFRICAN_FOOD.ViewModels
 
         public override async Task InitializeAsync(object data)
         {
+            IsCommandLoaded = true;
             var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
             ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+            IsCommandLoaded = false;
         }
 
         private async void DelectShopping(ShoppingCartItem shoppingCartItem)
@@ -146,9 +158,11 @@ namespace AFRICAN_FOOD.ViewModels
 
         public async void CommenRefresh()
         {
+            IsCommandLoaded = true;
             ShoppingCartItems.Clear();
             var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
             ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+            IsCommandLoaded = false;
         }
 
 
