@@ -55,7 +55,7 @@
                         <ViewCell>
                             <Grid Margin="5" BackgroundColor="White" RowSpacing="2">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
                                     <RowDefinition Height="40"></RowDefinition>
                                     <RowDefinition Height="30"></RowDefinition>
                                     <RowDefinition Height="30"></RowDefinition>
@@ -69,8 +69,10 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="200" Aspect="Fill" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Pie.Image,Converter={StaticResource convertorImage}}"></Image>
-                                <Button Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Text="Annuler" IsEnabled="{Binding InStock}" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference ShoppingViewPage}, Path=BindingContext.DelectShoppingCommand}" CommandParameter="{Binding}"></Button>
+                                <Image Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="200" Margin="2,2,2,1" Aspect="Fill" Source="{Binding Pie.Image,Converter={StaticResource convertorImage}}"></Image>
+                                <StackLayout Margin="2,2,2,2" Grid.Row="1" Grid.ColumnSpan="3">
+                                    <Button  Text="Annuler" IsEnabled="{Binding InStock}" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference ShoppingViewPage}, Path=BindingContext.DelectShoppingCommand}" CommandParameter="{Binding}"></Button>
+                                </StackLayout>
                                 <StackLayout  Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" Orientation="Horizontal">
                                     <Label Text="Produit : " Style="{StaticResource PieTileNameStyle}"></Label>
                                     <Label Text="{Binding Pie.Name}" Style="{StaticResource PieTileNameStyle}"></Label>
