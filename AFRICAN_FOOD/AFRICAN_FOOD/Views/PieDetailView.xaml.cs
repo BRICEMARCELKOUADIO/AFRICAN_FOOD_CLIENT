@@ -22,7 +22,7 @@ namespace AFRICAN_FOOD.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Bootstrap.AppContainer.Resolve<PieDetailViewModel>().ViewModelMap = MyMap;
+            //Bootstrap.AppContainer.Resolve<PieDetailViewModel>().ViewModelMap = MyMap;
             
         }
     }

@@ -46,17 +46,19 @@ namespace AFRICAN_FOOD.Repository
                 if (responseMessage.StatusCode == HttpStatusCode.Forbidden ||
                     responseMessage.StatusCode == HttpStatusCode.Unauthorized)
                 {
-                    throw new ServiceAuthenticationException(jsonResult);
+                    //throw new ServiceAuthenticationException(jsonResult);
+                    return default;
                 }
 
-                throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
+                return default;
+                //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
             catch (Exception e)
             {
                 //Debug.WriteLine($"{ e.GetType().Name + " : " + e.Message}");
                 //throw;
-                return default(T);
+                return default;
             }
         }
 
@@ -95,9 +97,10 @@ namespace AFRICAN_FOOD.Repository
                     responseMessage.StatusCode == HttpStatusCode.Unauthorized)
                 {
                     //throw new ServiceAuthenticationException(jsonResult);
+                    return default;
                 }
 
-                return default(T);
+                return default;
                 //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
@@ -105,7 +108,7 @@ namespace AFRICAN_FOOD.Repository
             {
                 //Debug.WriteLine($"{ e.GetType().Name + " : " + e.Message}");
                 //throw;
-                return default(T);
+                return default;
             }
         }
 
@@ -144,10 +147,11 @@ namespace AFRICAN_FOOD.Repository
                     responseMessage.StatusCode == HttpStatusCode.Unauthorized)
                 {
                     //throw new ServiceAuthenticationException(jsonResult);
+                    return default;
                     
                 }
 
-                return default(TR);
+                return default;
                 //throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
 
             }
@@ -155,7 +159,7 @@ namespace AFRICAN_FOOD.Repository
             {
                 //Debug.WriteLine($"{ e.GetType().Name + " : " + e.Message}");
                 //throw;
-                return default(TR);
+                return default;
             }
         }
 
@@ -194,7 +198,7 @@ namespace AFRICAN_FOOD.Repository
                     responseMessage.StatusCode == HttpStatusCode.Unauthorized)
                 {
                     //throw new ServiceAuthenticationException(jsonResult);
-                    return default(T);
+                    return default;
                 }
 
                 throw new HttpRequestExceptionEx(responseMessage.StatusCode, jsonResult);
@@ -204,7 +208,7 @@ namespace AFRICAN_FOOD.Repository
             {
                 //Debug.WriteLine($"{ e.GetType().Name + " : " + e.Message}");
                 //throw;
-                return default(T);
+                return default;
             }
         }
 

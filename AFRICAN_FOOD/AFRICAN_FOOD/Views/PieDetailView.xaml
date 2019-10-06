@@ -69,17 +69,19 @@
                 <Button Grid.Row="2" VerticalOptions="End" HorizontalOptions="End" IsVisible="{Binding SelectedPie.InStock}" Margin="0,0,10,0" Text="Commander" 
                         Style="{StaticResource RegularButton}" Command="{Binding AddToCartCommand}"></Button>
                 <Grid Grid.Row="3">
-                    <map:Map x:Name="MyMap"  MapType="Street" HasZoomEnabled="True" >
+                    <!--<map:Map x:Name="MyMap"  MapType="Street" HasZoomEnabled="True" ItemsSource="{Binding }" >
                         
-                        <!--<map:Map.ItemTemplate >
-        
-                              --><!--Address="{Binding Address}"--><!--
+                        <map:Map.ItemTemplate >
+   
+                              
                             <DataTemplate>
-                                <map:Pin Position="{Binding Position}" Type="Place" Label="ddddd"  />
+                                <map:Pin Position="{Binding Position}" Address="{Binding Address}" Type="Place" Label="ddddd"  />
                             </DataTemplate>
-                        </map:Map.ItemTemplate>-->
+                        </map:Map.ItemTemplate>
 
-                    </map:Map>
+                    </map:Map>-->
+
+                    <ContentView Content="{Binding Map}"/>
                 </Grid>
                 <!--<Button Grid.Row="3" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,0,10,0" 
                         Text="Read description" Style="{StaticResource RegularButton}" Command="{Binding ReadDescriptionCommand}"></Button>-->

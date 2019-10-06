@@ -9,8 +9,16 @@
              Title="VOTRE PANIER"
              xmlns:utility="clr-namespace:AFRICAN_FOOD.Utility;assembly=AFRICAN_FOOD"
              x:Name="ShoppingViewPage"
+             xmlns:convertor="clr-namespace:AFRICAN_FOOD.Converters;assembly=AFRICAN_FOOD"
              utility:ViewModelLocator.AutoWireViewModel="True" BackgroundImage="darktexture.jpg"
              >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <convertor:ByteToImageFieldConverter x:Key="convertorImage"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -47,6 +55,7 @@
                         <ViewCell>
                             <Grid Margin="5" BackgroundColor="White" RowSpacing="2">
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                     <RowDefinition Height="40"></RowDefinition>
                                     <RowDefinition Height="30"></RowDefinition>
                                     <RowDefinition Height="30"></RowDefinition>
@@ -60,24 +69,24 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <!--<Image Grid.Row="1" Grid.RowSpan="2" HeightRequest="80" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Pie.ImageUrl}"></Image>-->
-                                <Button Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2" Text="Annuler" IsEnabled="{Binding InStock}" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference ShoppingViewPage}, Path=BindingContext.DelectShoppingCommand}" CommandParameter="{Binding}"></Button>
-                                <StackLayout  Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Orientation="Horizontal">
+                                <Image Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="200" Aspect="Fill" WidthRequest="100" VerticalOptions="Start" Margin="2,2,1,2" Source="{Binding Pie.Image,Converter={StaticResource convertorImage}}"></Image>
+                                <Button Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" Text="Annuler" IsEnabled="{Binding InStock}" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference ShoppingViewPage}, Path=BindingContext.DelectShoppingCommand}" CommandParameter="{Binding}"></Button>
+                                <StackLayout  Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" Orientation="Horizontal">
                                     <Label Text="Produit : " Style="{StaticResource PieTileNameStyle}"></Label>
                                     <Label Text="{Binding Pie.Name}" Style="{StaticResource PieTileNameStyle}"></Label>
                                 </StackLayout>
                                 
-                                <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal">
+                                <StackLayout Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
                                     <Label  Text="Numero du vendeur : "  Style="{StaticResource PieTileNameStyle}"></Label>
                                     <Label  Text="{Binding Pie.UserPhone}" Style="{StaticResource PieTileNameStyle}"></Label>
                                 </StackLayout>
-                                <StackLayout Grid.Row="3" Grid.ColumnSpan="3" Orientation="Horizontal">
+                                <StackLayout Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal">
                                     <Label  Text="Lieu de vente : "  Style="{StaticResource PieTileNameStyle}"></Label>
                                     <Label  Text="{Binding Pie.PositionGeo}" Style="{StaticResource PieTileNameStyle}"></Label>
                                 </StackLayout>
                                 <!--<Label Grid.Row="0" Grid.Column="2"  Margin="3" Text="{Binding Pie.Price, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource PieTilePriceStyle}" HorizontalTextAlignment="End"></Label>-->
                                 <!--<Label Grid.Column="1" Grid.Row="1" Margin="3" Grid.ColumnSpan="2" Text="{Binding Pie.ShortDescription}" Style="{StaticResource PieTileDescriptionStyle}"></Label>-->
-                                <Grid Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="1" HeightRequest="30">
+                                <Grid Grid.Row="5" Grid.ColumnSpan="2" Grid.Column="1" HeightRequest="30">
                                     <Grid.RowDefinitions>
                                         <RowDefinition></RowDefinition>
                                         <RowDefinition></RowDefinition>
