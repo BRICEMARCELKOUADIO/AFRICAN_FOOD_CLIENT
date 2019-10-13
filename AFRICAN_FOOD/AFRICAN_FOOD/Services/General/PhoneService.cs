@@ -10,7 +10,7 @@ namespace AFRICAN_FOOD.Services.General
     {
         public void MakePhoneCall()
         {
-            CrossMessaging.Current.PhoneDialer.MakePhoneCall("5554885002");
+            CrossMessaging.Current.PhoneDialer.MakePhoneCall("+22548370546");
         }
     }
 }

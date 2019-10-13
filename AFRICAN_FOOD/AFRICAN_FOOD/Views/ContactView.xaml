@@ -17,11 +17,11 @@
                     <RowDefinition Height="500"></RowDefinition>
                     <RowDefinition Height="50"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Image HeightRequest="150" Grid.Row="0" Source="carousel1.jpg" Aspect="AspectFill"></Image>
+                <Image HeightRequest="150" Grid.Row="0" Source="carousel3.jpg" Aspect="AspectFill"></Image>
                 <StackLayout VerticalOptions="FillAndExpand" Grid.Row="1" Margin="5">
                     <Label Text="Contactez nous" Margin="0, 5" Style="{StaticResource PageHeaderStyle}" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label  Margin="0, 5" Text="Merci beaucoup de votre visite. Sans le soutien de nos compagnons amateurs de pâtés en croûte, Bethany Pie Shop ne serait pas possible. Bien que nous ayons une large sélection de tartes pour votre plaisir, nous effectuons également des commandes spéciales et nous aimerions apporter les bonbons pour votre prochain grand événement." Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label Margin="0, 5" Text="Si vous avez un événement à venir, si vous avez une demande particulière ou si vous souhaitez simplement parler de tartes, utilisez le formulaire ci-dessous pour nous envoyer un message!" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label  Margin="0, 5" Text="Chez African Food, on oeuvre pour un monde sans faim car nous pensons que la nourriture est faite pour être manger et non être jeter. Notre ambition c'est d'y arriver ensemble alors merci de prendre part au combat en réduisant le gaspillage alimentaire tout en faisant des économies." Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Margin="0, 5" Text="Pour toutes vos préoccupations et suggestions, merci de nous laisser un message" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
                     <controls:RoundedEntry Placeholder="Email" Margin="0, 5" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Email, Mode=TwoWay}"/>
                     <controls:RoundedEntry Placeholder="Message" Margin="0, 5" WidthRequest="100" Style="{StaticResource RoundedEntryStyle}" Text="{Binding Message, Mode=TwoWay}"/>
                     <Button Style="{StaticResource RegularButton}" Text="Envoyer un commentaire" Command="{Binding SubmitMessageCommand}"></Button>
@@ -30,7 +30,7 @@
                 </StackLayout>
                 <StackLayout Grid.Row="2">
                     <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
-                    <Label Text="© 2019 African Food" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                    <Label Text="© 2019 African Food" HorizontalOptions="Center" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
                 </StackLayout>
             </Grid>
         </ScrollView>

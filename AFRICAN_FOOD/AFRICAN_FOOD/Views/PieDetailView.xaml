@@ -87,7 +87,7 @@
                         Text="Read description" Style="{StaticResource RegularButton}" Command="{Binding ReadDescriptionCommand}"></Button>-->
                 <Grid Grid.Row="4">
                     <Image Source="patternwide.png" HeightRequest="50" Aspect="Fill"></Image>
-                    <Label Text="© 2019 African Food" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
+                    <Label Text="© 2019 African Food" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" Style="{StaticResource RegularStyle}"></Label>
                 </Grid>
             </Grid>
         </ScrollView>
