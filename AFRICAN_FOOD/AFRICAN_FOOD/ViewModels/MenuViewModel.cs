@@ -85,6 +85,13 @@ namespace AFRICAN_FOOD.ViewModels
                 MenuItemType = MenuItemType.Contact
             });
 
+            //MenuItems.Add(new MainMenuItem
+            //{
+            //    MenuText = "Parametre",
+            //    ViewModelToLoad = typeof(ContactViewModel),
+            //    MenuItemType = MenuItemType.settings
+            //});
+
             MenuItems.Add(new MainMenuItem
             {
                 MenuText = "Deconnexion",

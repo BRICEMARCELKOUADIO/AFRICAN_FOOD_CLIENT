@@ -25,6 +25,8 @@ namespace AFRICAN_FOOD.Converters
                     return "ic_cart.png";
                 case MenuItemType.Logout:
                     return "ic_logout.png";
+                //case MenuItemType.settings:
+                //    return "ic_settings.png";
                 default:
                     return string.Empty;
             }
