@@ -21,7 +21,7 @@ namespace AFRICAN_FOOD.Services.Data
 
         }
 
-        public async Task<AuthenticationResponse> Register(string firstName, string lastName, string email, bool typeuser, string userPhone,double longitude, double latitude, string position, string password)
+        public async Task<AuthenticationResponse> Register(string firstName, string lastName, string email, bool typeuser, string userPhone,double longitude, double latitude, string position, string password, bool Ismodify, string oldEmail)
         {
             UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
             {
@@ -39,7 +39,7 @@ namespace AFRICAN_FOOD.Services.Data
 
             };
 
-            var url = $"{ApiConstants.BaseApiUrl}{ ApiConstants.RegisterEndpoint}?FirstName={firstName}&LastName={lastName}&Email={email}&TypeUser={typeuser}&UserPhone={userPhone}&Longitude={longitude}&Latitude={latitude}&PositionGeo={position}&Password={password}";
+            var url = $"{ApiConstants.BaseApiUrl}{ ApiConstants.RegisterEndpoint}?FirstName={firstName}&LastName={lastName}&Email={email}&TypeUser={typeuser}&UserPhone={userPhone}&Longitude={longitude}&Latitude={latitude}&PositionGeo={position}&Password={password}&Ismodify={Ismodify}&oldEmail={oldEmail}";
 
             return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(url, authenticationRequest);
         }
@@ -65,6 +65,24 @@ namespace AFRICAN_FOOD.Services.Data
             };
 
             return await _genericRepository.PostAsync<AuthenticationRequest, AuthenticationResponse>(url, authenticationRequest);
+        }
+
+        public async Task<AuthenticationResponse> DeleteMyCompte(string id)
+        {
+            UriBuilder builder = new UriBuilder(ApiConstants.BaseApiUrl)
+            {
+                Path = ApiConstants.DeleteUser+$"/{id}"
+            };
+
+            AuthenticationRequest authenticationRequest = new AuthenticationRequest()
+            {
+                Email = "",
+                Password = ""
+            };
+
+            var url = $"{ApiConstants.BaseApiUrl}{ ApiConstants.DeleteUser}?id={id}";
+
+            return await _genericRepository.PostAsync<AuthenticationRequest,AuthenticationResponse>(url, authenticationRequest);
         }
     }
 }

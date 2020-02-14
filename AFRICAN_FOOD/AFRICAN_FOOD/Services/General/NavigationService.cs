@@ -181,6 +181,9 @@ namespace AFRICAN_FOOD.Services.General
             _mappings.Add(typeof(PieDetailViewModel), typeof(PieDetailView));
             _mappings.Add(typeof(RegistrationViewModel), typeof(RegistrationView));
             _mappings.Add(typeof(ShoppingCartViewModel), typeof(ShoppingCartView));
+            _mappings.Add(typeof(UserProfilViewModel), typeof(UserProfilView));
+            _mappings.Add(typeof(MessageViewModel), typeof(MessageView));
+            _mappings.Add(typeof(MessagesViewModel), typeof(MessagesView));
         }
     }
 }

@@ -6611,31 +6611,31 @@ namespace AFRICAN_FOOD.Droid
 			public const int ic_pies = 2131165489;
 			
 			// aapt resource value: 0x7F070132
-			public const int ic_settings = 2131165490;
+			public const int ic_successstatus = 2131165490;
 			
 			// aapt resource value: 0x7F070133
-			public const int ic_successstatus = 2131165491;
+			public const int ic_vol_type_speaker_dark = 2131165491;
 			
 			// aapt resource value: 0x7F070134
-			public const int ic_vol_type_speaker_dark = 2131165492;
+			public const int ic_vol_type_speaker_group_dark = 2131165492;
 			
 			// aapt resource value: 0x7F070135
-			public const int ic_vol_type_speaker_group_dark = 2131165493;
+			public const int ic_vol_type_speaker_group_light = 2131165493;
 			
 			// aapt resource value: 0x7F070136
-			public const int ic_vol_type_speaker_group_light = 2131165494;
+			public const int ic_vol_type_speaker_light = 2131165494;
 			
 			// aapt resource value: 0x7F070137
-			public const int ic_vol_type_speaker_light = 2131165495;
+			public const int ic_vol_type_tv_dark = 2131165495;
 			
 			// aapt resource value: 0x7F070138
-			public const int ic_vol_type_tv_dark = 2131165496;
+			public const int ic_vol_type_tv_light = 2131165496;
 			
 			// aapt resource value: 0x7F070139
-			public const int ic_vol_type_tv_light = 2131165497;
+			public const int lunch = 2131165497;
 			
 			// aapt resource value: 0x7F07013A
-			public const int lunch = 2131165498;
+			public const int message = 2131165498;
 			
 			// aapt resource value: 0x7F07013B
 			public const int mr_button_connected_dark = 2131165499;
@@ -6755,19 +6755,31 @@ namespace AFRICAN_FOOD.Droid
 			public const int roundedbgdark = 2131165537;
 			
 			// aapt resource value: 0x7F070162
-			public const int splash = 2131165538;
+			public const int send = 2131165538;
 			
 			// aapt resource value: 0x7F070163
-			public const int splash_drawable = 2131165539;
+			public const int settings = 2131165539;
 			
 			// aapt resource value: 0x7F070164
-			public const int tooltip_frame_dark = 2131165540;
+			public const int splash = 2131165540;
 			
 			// aapt resource value: 0x7F070165
-			public const int tooltip_frame_light = 2131165541;
+			public const int splash_drawable = 2131165541;
 			
 			// aapt resource value: 0x7F070166
-			public const int whitewood = 2131165542;
+			public const int tchat_background = 2131165542;
+			
+			// aapt resource value: 0x7F070167
+			public const int tooltip_frame_dark = 2131165543;
+			
+			// aapt resource value: 0x7F070168
+			public const int tooltip_frame_light = 2131165544;
+			
+			// aapt resource value: 0x7F070169
+			public const int user = 2131165545;
+			
+			// aapt resource value: 0x7F07016A
+			public const int whitewood = 2131165546;
 			
 			static Drawable()
 			{
