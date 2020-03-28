@@ -8,6 +8,9 @@ using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
 using Plugin.CurrentActivity;
+using Plugin.Permissions;
+using Android.Content;
+using Android.Locations;
 
 namespace AFRICAN_FOOD.Droid
 {
@@ -27,13 +30,19 @@ namespace AFRICAN_FOOD.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsMaps.Init(this,savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            LocationManager locationManager = (LocationManager)Instance.GetSystemService(LocationService);
+
+            if (locationManager.IsProviderEnabled(LocationManager.GpsProvider) == false)
+            {
+                StartActivity(new Intent(Android.Provider.Settings.ActionLocationSourceSettings));
+            }
             UserDialogs.Init(this);
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }

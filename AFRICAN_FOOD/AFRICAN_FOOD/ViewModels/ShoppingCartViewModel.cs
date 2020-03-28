@@ -7,6 +7,7 @@ using AFRICAN_FOOD.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -25,6 +26,7 @@ namespace AFRICAN_FOOD.ViewModels
         private decimal _taxes;
         private decimal _shipping;
         private decimal _grandTotal;
+        private bool _isEmpty;
 
         public ShoppingCartViewModel(IConnectionService connectionService,
             INavigationService navigationService, IDialogService dialogService,
@@ -39,6 +41,7 @@ namespace AFRICAN_FOOD.ViewModels
         }
 
         public ICommand CheckOutCommand => new Command(OnCheckOut);
+        public ICommand UserTapped => new Command<ShoppingCartItem>(OnUserTapped);
         public ICommand DelectShoppingCommand => new Command<ShoppingCartItem>(DelectShopping);
 
         public ObservableCollection<ShoppingCartItem> ShoppingCartItems
@@ -62,6 +65,17 @@ namespace AFRICAN_FOOD.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public bool IsEmpty
+        {
+            get => _isEmpty;
+            set
+            {
+                _isEmpty = value;
+                OnPropertyChanged();
+            }
+        }
+
         public decimal GrandTotal
         {
             get => _grandTotal;
@@ -137,7 +151,13 @@ namespace AFRICAN_FOOD.ViewModels
         {
             IsCommandLoaded = true;
             var shoppingCart = await _shoppingCartService.GetShoppingCart(_settingsService.UserIdSetting);
-            ShoppingCartItems = shoppingCart.ShoppingCartItems.ToObservableCollection();
+            ShoppingCartItems = shoppingCart?.ShoppingCartItems.ToObservableCollection();
+            if (ShoppingCartItems == null || !ShoppingCartItems.Any())
+            {
+                ShoppingCartItems = new ObservableCollection<ShoppingCartItem>();
+                IsEmpty = true;
+            }
+
             IsCommandLoaded = false;
         }
 
@@ -156,6 +176,15 @@ namespace AFRICAN_FOOD.ViewModels
         }
 
 
+        private void OnUserTapped(ShoppingCartItem shoppingCartItem)
+        {
+            var user = new User()
+            {
+                Id = shoppingCartItem.Pie.UserAdminId
+            };
+            _navigationService.NavigateToAsync<MessageViewModel>(user);
+        }
+
         public async void CommenRefresh()
         {
             IsCommandLoaded = true;
@@ -170,7 +199,7 @@ namespace AFRICAN_FOOD.ViewModels
 
         private async void OnAddPieToBasketReceived(Pie pie)
         {
-            var shoppingCartItem = new ShoppingCartItem() { Pie = pie, PieId = pie.PieId, Quantity = 1, ClientNumber = _settingsService.ClientNumberSetting };
+            var shoppingCartItem = new ShoppingCartItem() { Pie = pie, PieId = pie.PieId, Quantity = 1, ClientNumber = _settingsService.ClientNumberSetting,ClientId = _settingsService.UserIdSetting,ClientName=_settingsService.UserNameSetting+" "+_settingsService.UserLastName };
 
             await _shoppingCartService.AddShoppingCartItem(shoppingCartItem, _settingsService.UserIdSetting);
 

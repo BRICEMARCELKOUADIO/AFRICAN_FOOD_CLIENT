@@ -43,6 +43,7 @@ namespace AFRICAN_FOOD.Bootstrap
 
             //services - general
             builder.RegisterType<ConnectionService>().As<IConnectionService>();
+            builder.RegisterType<ApplicationContext>().As<IApplicationContext>();
             builder.RegisterType<NavigationService>().As<INavigationService>();
             builder.RegisterType<AuthenticationService>().As<IAuthenticationService>();
             builder.RegisterType<DialogService>().As<IDialogService>();

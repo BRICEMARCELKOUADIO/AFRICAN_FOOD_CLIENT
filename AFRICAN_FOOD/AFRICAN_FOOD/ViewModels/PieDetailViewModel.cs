@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -68,19 +69,38 @@ namespace AFRICAN_FOOD.ViewModels
 
         public async void UpdateMapNew(Pie pie)
         {
+            CultureInfo culture;
+            culture = CultureInfo.CreateSpecificCulture("fr-FR");
             var pin = new Xamarin.Forms.Maps.Pin {
                 Type =PinType.Place,
-                Position = new Position(pie.Latitude, pie.Longitude),
+                Position = new Position(
+                    double.Parse(pie.Latitude,culture.NumberFormat) ,
+                    double.Parse(pie.Longitude,culture.NumberFormat)
+                    ),
                 Label = pie.PositionGeo,
                 Address =pie.PositionGeo
 
             };
             Map.Pins.Add(pin);
-            Map.MoveToRegion(MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMiles(0.3)));
-            //Places.Add(new Place
-            //{
-            //    PlaceName = pie.PositionGeo,
-            //    Position = new Position(pie.Latitude, pie.Longitude),
+
+            var mapspan = MapSpan.FromCenterAndRadius(
+                pin.Position,
+                Distance.FromKilometers(0.444)
+                );
+            Map.MoveToRegion(mapspan);
+
+      //      var mapspan = MapSpan.FromCenterAndRadius(
+      //new Position(5.353016, -4.0550401),
+      //Distance.FromKilometers(0.444)
+      //);
+      //Map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(5.3757265, -3.9929553), Distance.FromMiles(1)));
+      // Map.MoveToRegion(mapspan);
+      //var mapspan = new MapSpan(pin.Position, 0, 0);
+      //Map.MoveToRegion(mapspan.WithZoom(1)) ;//MapSpan.FromCenterAndRadius(pin.Position, Distance.FromMiles(0.3))
+      //Places.Add(new Place
+      //{
+      //    PlaceName = pie.PositionGeo,
+      //    Position = new Position(pie.Latitude, pie.Longitude),
 
             //});
             //var loc = await Geolocation.GetLocationAsync();

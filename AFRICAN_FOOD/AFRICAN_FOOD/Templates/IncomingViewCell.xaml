@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"></RowDefinition>
 
         </Grid.RowDefinitions>
-        <Frame Grid.Row="0" BackgroundColor="{StaticResource SecondaryColor}">
+        <Frame Grid.Row="0" BackgroundColor="#19496F">
             <Frame.HasShadow>
                 <OnPlatform x:TypeArguments="x:Boolean" iOS="false" Android="true"/>
             </Frame.HasShadow>
@@ -25,15 +25,7 @@
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Label FontSize="Micro" Grid.Column="0"  Text="{Binding MessageDateTime, StringFormat='\{0:dd/MM/yyyy HH:mm}'}" TextColor="Gray"></Label>
-            <!--<plugin:CircleImage  Grid.Column="1"
-                      HeightRequest="25"
-                      WidthRequest="25"
-                      BorderThickness="0"
-                      BorderColor="Transparent"
-                      Aspect="AspectFill"
-                      HorizontalOptions="Center"
-                      VerticalOptions="Center" Source="sample_doctor_image" />-->
-            <Label FontSize="Micro" Text="{Binding Author}" TextColor="{StaticResource SecondaryColor}"  Grid.Column="2" VerticalTextAlignment="Center" FontAttributes="Bold"/>
+            <Label FontSize="Micro" Text="{Binding Author}" TextColor="#19496F"  Grid.Column="2" VerticalTextAlignment="Center" FontAttributes="Bold"/>
         </Grid>
     </Grid>
 </ViewCell>

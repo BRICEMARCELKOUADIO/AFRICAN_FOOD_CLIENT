@@ -17,6 +17,7 @@ namespace AFRICAN_FOOD.ViewModels
         private readonly ISettingsService _settingsService;
         private readonly IDialogService _dialogService;
         private readonly IAuthenticationService _authenticationService;
+        private readonly IApplicationContext _applicationContext;
         private readonly INavigationService _navigationService;
         private readonly ITchatDataService _tchatDataService;
 
@@ -68,20 +69,28 @@ namespace AFRICAN_FOOD.ViewModels
             }
         }
         public ICommand SendCommand => new Command(OnsendMessage);
-        public MessageViewModel(IConnectionService connectionService, ITchatDataService tchatDataService, INavigationService navigationService, ISettingsService settingsService, IAuthenticationService authenticationService, IDialogService dialogService) : base(connectionService, navigationService, dialogService)
+        public MessageViewModel(IConnectionService connectionService,IApplicationContext applicationContext, ITchatDataService tchatDataService, INavigationService navigationService, ISettingsService settingsService, IAuthenticationService authenticationService, IDialogService dialogService) : base(connectionService, navigationService, dialogService)
         {
             _settingsService = settingsService;
-            //_dialogService = dialogService;
-            //_authenticationService = authenticationService;
             _tchatDataService = tchatDataService;
+            _applicationContext = applicationContext;
+            Messages = new Message();
+            MessageDetails = new ObservableCollection<MessageDetail>();
         }
 
         public override async Task InitializeAsync(object user)
         {
+            //_applicationContext.HandleNotification += HandleNotification;
             IsBusy = true;
             UserRecever = (User)user;
+            GetMessages();
+        }
+
+        private async void GetMessages()
+        {
+            IsBusy = true;
             Messages = await _tchatDataService.GetMessages(UserRecever.Id, _settingsService.UserIdSetting);
-            if (Messages != null && Messages.Details!=null)
+            if (Messages != null && Messages.Details != null)
             {
                 foreach (var item in Messages.Details)
                 {
@@ -93,7 +102,7 @@ namespace AFRICAN_FOOD.ViewModels
 
         private async void OnsendMessage()
         {
-            var message = new MessageDetail()
+            var messagd = new MessageDetail()
             {
                 MessageId = Messages.MessageId.ToString(),
                 Author = _settingsService.UserNameSetting,
@@ -102,10 +111,27 @@ namespace AFRICAN_FOOD.ViewModels
                 MessageDateTime = DateTime.Now,
 
             };
-            MessageDetails.Add(message);
+            MessageDetails.Add(messagd);
             OutGoingText = "";
-            await _tchatDataService.SendMessage(message);
+            await _tchatDataService.SendMessage(messagd);
 
         }
+
+        //public void OnAppearing()
+        //{
+        //    _applicationContext.HandleNotification += HandleNotification;
+        //}
+
+        //public void OnDisappearing()
+        //{
+        //    _applicationContext.HandleNotification -= HandleNotification;
+        //}
+
+        //private void HandleNotification(object sender, EventArgs e)
+        //{
+        //    MessageDetails.Clear();
+        //    GetMessages();
+
+        //}
     }
 }

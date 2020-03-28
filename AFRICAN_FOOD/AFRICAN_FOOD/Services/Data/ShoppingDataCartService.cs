@@ -29,7 +29,7 @@ namespace AFRICAN_FOOD.Services.Data
 
             var shoppingCart = await _genericRepository.GetAsync<ShoppingCart>(builder.ToString());
 
-            return shoppingCart;
+            return shoppingCart;// (shoppingCart != null)? shoppingCart :new ShoppingCart();
         }
 
         public async Task<ShoppingCartItem> AddShoppingCartItem(ShoppingCartItem shoppingCartItem, string userId)

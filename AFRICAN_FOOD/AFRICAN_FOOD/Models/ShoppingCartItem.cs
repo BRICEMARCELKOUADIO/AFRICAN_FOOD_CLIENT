@@ -15,6 +15,9 @@ namespace AFRICAN_FOOD.Models
 
         public int Quantity { get; set; }
 
+        public string ClientId { get; set; }
+        public string ClientName { get; set; }
+
         public decimal Total => Quantity * Pie.PrixPromotionnel;
     }
 }

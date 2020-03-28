@@ -70,8 +70,9 @@
                                     <ColumnDefinition Width="50"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Row="0" Grid.ColumnSpan="3" HeightRequest="200" Margin="2,2,2,1" Aspect="Fill" Source="{Binding Pie.Image,Converter={StaticResource convertorImage}}"></Image>
-                                <StackLayout Margin="2,2,2,2" Grid.Row="1" Grid.ColumnSpan="3">
+                                <StackLayout HorizontalOptions="Center" Margin="2,2,2,2" Grid.Row="1" Orientation="Horizontal" Spacing="30" Grid.ColumnSpan="3">
                                     <Button  Text="Annuler" IsEnabled="{Binding InStock}" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference ShoppingViewPage}, Path=BindingContext.DelectShoppingCommand}" CommandParameter="{Binding}"></Button>
+                                    <Button  Text="Ecris au vendeur" Style="{StaticResource RegularButton}" Command="{Binding Source={x:Reference ShoppingViewPage}, Path=BindingContext.UserTapped}" CommandParameter="{Binding}"></Button>
                                 </StackLayout>
                                 <StackLayout  Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0" Orientation="Horizontal">
                                     <Label Text="Produit : " Style="{StaticResource PieTileNameStyle}"></Label>
@@ -118,29 +119,14 @@
                             <Grid BackgroundColor="White" IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=True}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"></RowDefinition>
-                                    <!--<RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="15"></RowDefinition>
-                                    <RowDefinition Height="25"></RowDefinition>
-                                    <RowDefinition Height="50"></RowDefinition>-->
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <!--<Label Text="Your order" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource RegularStyle}"></Label>
-                                <Label Text="Purchase total" Grid.Row="1" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}" ></Label>
-                                <Label Text="Taxes" Grid.Row="2" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
-                                <Label Text="Shipping" Grid.Row="3" Grid.Column="0" Style="{StaticResource ShoppingCartTileSmallBoldStyle}"></Label>
-                                <Label Text="Total" Grid.Row="4" Grid.Column="0" Style="{StaticResource ShoppingCartLabelTotalStyle}"></Label>
-                                <Label Text="{Binding OrderTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="1" Grid.Column="1" ></Label>
-                                <Label Text="{Binding Taxes, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="2" Grid.Column="1" ></Label>
-                                <Label Text="{Binding Shipping, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTileSmallStyle}" Grid.Row="3" Grid.Column="1" ></Label>
-                                <Label Text="{Binding GrandTotal, Converter={StaticResource LocalCurrencyConverter}}" Style="{StaticResource ShoppingCartTotalStyle}" Grid.Row="4"  Grid.Column="1" ></Label>-->
-                                <!--<Button Text="VALIDER" Style="{StaticResource RegularButton}" Command="{Binding CheckOutCommand}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"></Button>-->
                             </Grid>
                             <Grid IsVisible="{Binding ShoppingCartItems.Count, Converter={StaticResource LocalCountToVisibilityConverter}, ConverterParameter=False}" VerticalOptions="CenterAndExpand">
-                                <Label Text="S'il vous plaît ajouter des produits" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="Aucune commande en cours" Style="{StaticResource RegularStyle}" HorizontalOptions="CenterAndExpand"></Label>
                             </Grid>
                         </Grid>
                     </DataTemplate>
